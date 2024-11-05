@@ -1,9 +1,13 @@
 import express from 'express'
 import cors from 'cors'
 import pkg from 'pg'
+import dotenv from 'dotenv'
 
 
-const port = 3001
+const environment = process.env.NODE_ENV
+dotenv.config()
+
+const port = process.env.PORT
 const { Pool } = pkg
 
 const app = express()
