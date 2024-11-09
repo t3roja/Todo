@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     axios.get(url)
       .then(response => {
-        setTasks(response.data)
+        setTasks(Array.isArray(response.data) ? response.data : [])
       }).catch(error => {
         alert(error.response.data.error ? error.response.data.error : error)
       })
