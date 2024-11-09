@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { router } from './routers/todoRouters.js'
 
-dotenv.config()
+
 const port = process.env.PORT
 
 const app = express()
