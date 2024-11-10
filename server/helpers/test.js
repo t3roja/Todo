@@ -12,14 +12,14 @@ const initializeTestDb = () => {
     pool.query(sql)
 }
 
-const insertTestUser = async (email, password) => {
+const insertTestUser = (email, password) => {
 
-        const hashedPassword = await hash(password, 10);
+        hash(password, 10, (error, hashedPassword) => {
         
-        await pool.query('INSERT INTO account (email, password) VALUES ($1, $2)', 
-            [email, hashedPassword]);
-
-};
+        pool.query('INSERT INTO account (email, password) VALUES ($1, $2)', 
+            [email, hashedPassword])
+    })
+}
 
 
 const getToken = (email) => {
